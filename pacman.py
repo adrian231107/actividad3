@@ -14,6 +14,8 @@ from turtle import *
 
 from freegames import floor, vector
 
+import math
+
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
@@ -131,19 +133,29 @@ def move():
     dot(20, 'yellow')
 
     for point, course in ghosts:
-        if valid(point + course):
-            point.move(course)
-        else:
-            options = [
+        options = [
                 vector(5, 0),
                 vector(-5, 0),
                 vector(0, 5),
                 vector(0, -5),
             ]
-            plan = choice(options)
-            course.x = plan.x
-            course.y = plan.y
 
+        best_option = None
+        best_distance = None
+
+        for option in options:
+            if valid(point + option):
+                distance = abs(point + option - pacman)
+
+                if best_distance is None or distance < best_distance:
+                    best_distance = distance
+                    best_option = option
+
+        if best_option is not None:
+            course.x = best_option.x
+            course.y = best_option.y
+            point.move(course)
+                   
         up()
         goto(point.x + 10, point.y + 10)
         dot(20, 'red')
