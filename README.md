@@ -4,7 +4,7 @@
 
 #Implementaciones:
 
-- Fantasmas inteligentes: Se modifico la logica en el movimiento de los fantasmas para que tomen trayectorias orientadas en la posicion de pacman.
+-Fantasmas inteligentes: Se modifico la logica en el movimiento de los fantasmas para que tomen trayectorias orientadas en la posicion de pacman.
   
 -Modificacion de mapa: Se modifico "tiles" para rediseñar la administración del mapa.
 
